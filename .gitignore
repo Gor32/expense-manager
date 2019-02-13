@@ -9,3 +9,6 @@ build/
 ios/.generated/
 packages
 .flutter-plugins
+
+#tmp
+test/
