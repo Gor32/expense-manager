@@ -9,6 +9,6 @@ build/
 ios/.generated/
 packages
 .flutter-plugins
-
+android/.gradle
 #tmp
 test/
