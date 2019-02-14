@@ -19,8 +19,6 @@ class HomeScreen extends StatefulWidget {
 enum NavigationItem { groups, expenses }
 
 class _HomeScreenState extends State<HomeScreen> {
-  NavigationItem _selectedItem;
-
   final drawerItems = {
     NavigationItem.groups: new DrawerItem(
         Strings.home_screen_drawer_item_groups,
@@ -29,6 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
         Strings.home_screen_drawer_item_expenses,
         AppIcons.home_screen_drawer_item_expenses)
   };
+
+  NavigationItem _selectedItem = NavigationItem.groups;
 
   _onSelectItem(NavigationItem item) {
     setState(() {
@@ -41,7 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
   _getDrawerItemScreen(NavigationItem item) {
     switch (item) {
       case NavigationItem.groups:
-        return new Text(Strings.home_screen_drawer_item_groups);
+        return new Scaffold(
+          body: new Text(Strings.home_screen_drawer_item_groups),
+          floatingActionButton: new FloatingActionButton(
+              onPressed: ()  {},
+              child: new Icon(Icons.group_add)),
+        );
+        //return new Text(Strings.home_screen_drawer_item_groups);
 
       case NavigationItem.expenses:
         return new Text(Strings.home_screen_drawer_item_expenses);
@@ -61,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(widget.title),
+        title: new Text(drawerItems[_selectedItem].title ),
       ),
       drawer: HomeScreenDrawer(_getDrawerOptions()),
       body: _getDrawerItemScreen(_selectedItem),
