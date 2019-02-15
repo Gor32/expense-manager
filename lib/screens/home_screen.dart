@@ -3,11 +3,12 @@ import 'package:expense_manager/resources/icons.dart';
 
 import 'package:expense_manager/widgets/home_screen_drawer.dart';
 import 'package:expense_manager/widgets/home_screen_drawer_item.dart';
+import 'package:expense_manager/screens/screens.ui_model.dart';
 
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'screens.ui_model.dart';
+import 'package:expense_manager/screens/groups_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title = Strings.home_screen_title;
@@ -41,13 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   _getDrawerItemScreen(NavigationItem item) {
     switch (item) {
       case NavigationItem.groups:
-        return new Scaffold(
-          body: new Text(Strings.home_screen_drawer_item_groups),
-          floatingActionButton: new FloatingActionButton(
-              onPressed: ()  {},
-              child: new Icon(Icons.group_add)),
-        );
-        //return new Text(Strings.home_screen_drawer_item_groups);
+        return new GroupsScreen();
 
       case NavigationItem.expenses:
         return new Text(Strings.home_screen_drawer_item_expenses);
@@ -67,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(drawerItems[_selectedItem].title ),
+        title: new Text(drawerItems[_selectedItem].title),
       ),
       drawer: HomeScreenDrawer(_getDrawerOptions()),
       body: _getDrawerItemScreen(_selectedItem),

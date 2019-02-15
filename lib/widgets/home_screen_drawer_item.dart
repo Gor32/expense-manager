@@ -12,7 +12,7 @@ class HomeScreenDrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new ListTile(
-      leading: new Icon(drawerItem.icon),
+      leading: new Icon(drawerItem.icon, color: Colors.blue),
       title: new Text(drawerItem.title,
           style: new TextStyle(
               fontSize: Numbers.drawer_item_font_size,
